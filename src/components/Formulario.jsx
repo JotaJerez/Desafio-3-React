@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 
-const Formulario = ({agregarColaborador}) => {
+const Formulario = ({agregarColaborador, setAlert}) => {
     
     const initialInputValues = {
       nombreColaborador: "",
@@ -13,7 +13,6 @@ const Formulario = ({agregarColaborador}) => {
     };
   
     const [inputValues, setInputValues] = useState(initialInputValues);
-    const [error, setError] = useState("");
   
     // Función al enviar el formulario
     const enviarFormulario = (e) => {
@@ -26,8 +25,25 @@ const Formulario = ({agregarColaborador}) => {
         inputValues.cargoColaborador === "" ||
         inputValues.telefonoColaborador === ""
       ) {
-        setError("¡Completa los campos!");
+        setAlert({
+          error: true,
+          msg: "Completa los campos",
+          color: "bg-danger"
+        })
         return;
+      } else if (!isValidEmail(inputValues.correoColaborador)) {
+        setAlert({
+          error: true,
+          msg: "Debes ingresar un correo válido",
+          color: "bg-danger"
+        })
+        return;
+      } else {
+        setAlert({
+          error: false,
+          msg: "¡Registro exitoso!",
+          color: "bg-success"
+        })
       }
 
       const nuevoColaborador = {
@@ -40,9 +56,6 @@ const Formulario = ({agregarColaborador}) => {
       };
 
       agregarColaborador(nuevoColaborador);
-
-      // No hay errores :)
-      setError("");
     
       // Reiniciar los valores de los inputs después de agregar un colaborador
       setInputValues(initialInputValues);
@@ -55,6 +68,12 @@ const Formulario = ({agregarColaborador}) => {
         ...inputValues,
         [name]: value
       });
+    };
+
+    // Valida el email
+    const isValidEmail = (email) => {
+      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      return emailRegex.test(email);
     };
   
     return (
@@ -103,7 +122,6 @@ const Formulario = ({agregarColaborador}) => {
               placeholder='Teléfono'
             />
             <button className='mt-2 bg-primary text-white'> Agregar Colaborador </button>
-            {error && <p className='mt-2 py-3 bg-danger text-white text-center'>{error}</p>}
           </form>
         </div>
       </>

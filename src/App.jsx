@@ -11,6 +11,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 
 function App() {
+  
+  const [alert, setAlert] = useState({
+    error: "",
+    msg: "",
+    color: ""
+  });
 
   const [colaboradores, setColaboradores] = useState([]);
 
@@ -20,12 +26,17 @@ function App() {
 
   return (
     <>
+      <Buscador />
       <div className='row'>
-        <div className='col-8'>
+        <div className='col-lg-8 col-md-12'>
           <Listado colaboradores={colaboradores} BaseColaboradores={BaseColaboradores} />
         </div>
-        <div className='col-4'>
-          <Formulario agregarColaborador={agregarColaborador} />
+
+        <div className='col-lg-4 col-md-12'>
+          <div className='d-flex flex-column align-items-center'>
+            <Formulario agregarColaborador={agregarColaborador} setAlert={setAlert} />
+            {alert.msg && <Alert msg={alert.msg} color={alert.color} />}
+          </div>
         </div>
       </div>
     </>

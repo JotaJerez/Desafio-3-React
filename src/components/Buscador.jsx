@@ -2,7 +2,9 @@ import React from 'react'
 
 const Buscador = () => {
   return (
-    <div>Buscador</div>
+    <>
+      <h1>Lista de Colaboradores</h1>
+    </>
   )
 }
 
