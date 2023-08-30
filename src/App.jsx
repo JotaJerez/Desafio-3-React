@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 
-import Listado from './components/Listado' // Requerimientos Punto 1
-import Formulario from './components/Formulario' // Requerimientos Punto 1
-import Buscador from './components/Buscador' // Requerimientos Punto 1
-import Alert from './components/Alert' // Requerimientos Punto 1
+import Listado from './components/Listado'
+import Formulario from './components/Formulario'
+import Buscador from './components/Buscador'
+import Alert from './components/Alert'
 
-import { BaseColaboradores } from './BaseColaboradores' // Requerimientos Punto 2
+import { BaseColaboradores } from './BaseColaboradores'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'

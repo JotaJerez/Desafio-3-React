@@ -21,7 +21,7 @@ const Listado = ({colaboradores, BaseColaboradores}) => {
                 </tr>
             </thead>
             <tbody>
-            {BaseColaboradores.map(colaborador => ( // Requerimientos Punto 3
+            {BaseColaboradores.map(colaborador => (
                 <tr key={colaborador.id}>
                     <td>{colaborador.nombre}</td>
                     <td>{colaborador.correo}</td>
