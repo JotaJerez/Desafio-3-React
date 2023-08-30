@@ -12,18 +12,24 @@ import './App.css'
 
 function App() {
   
+  // El estado de alert es un objeto que tiene tres propiedades: error, msg y color.
+  // Estas propiedades se utilizan para mostrar mensajes de alerta en la interfaz de usuario.
   const [alert, setAlert] = useState({
     error: "",
     msg: "",
     color: ""
   });
 
+  // El estado de colaboradores es un arreglo vacío al principio y se utiliza para almacenar la lista de colaboradores.
   const [colaboradores, setColaboradores] = useState([]);
 
+  // La función agregarColaborador es una función que toma un nuevo colaborador como argumento y agrega ese colaborador al arreglo de colaboradores.
   const agregarColaborador = (nuevoColaborador) => {
     setColaboradores([...colaboradores, nuevoColaborador]);
   };
 
+  // Al componente Listado se le pasa la lista de colaboradores y la fuente de datos BaseColaboradores.
+  // El componente Formulario toma como prop la función agregarColaborador y también la función setAlert.
   return (
     <>
       <Buscador />
