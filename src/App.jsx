@@ -28,14 +28,16 @@ function App() {
     setColaboradores([...colaboradores, nuevoColaborador]);
   };
 
+  const [searchTerm, setSearchTerm] = useState("")
+
   // Al componente Listado se le pasa la lista de colaboradores y la fuente de datos BaseColaboradores.
   // El componente Formulario toma como prop la función agregarColaborador y también la función setAlert.
   return (
     <>
-      <Buscador />
+      <Buscador searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className='row'>
         <div className='col-lg-8 col-md-12'>
-          <Listado colaboradores={colaboradores} BaseColaboradores={BaseColaboradores} />
+          <Listado colaboradores={colaboradores} BaseColaboradores={BaseColaboradores} searchTerm={searchTerm}/>
         </div>
 
         <div className='col-lg-4 col-md-12'>
